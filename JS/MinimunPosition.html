@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        /**
+ * El Algoritmo consiste en lo siguiente: la funcion getMin recibira por parametro un array
+ * con valores repetidos aleatoriamente.
+ *
+ * Entonces se debe retornar el valor del array, cuya suma de posiciones donde se repite(que obviamente tiene que ser mayor que uno)
+ * sea el menor valor absoluto.
+ *
+ * Ejemplo [2,1,3,2,1] -> esto deberia retornar 2, porque se repite en la posicion 0 y 3 cuya suma de
+ * valores es 3, a diferencia del 1 que se repite en la posicion 1 y 4 y suma de posiciones da 5.
+ *
+ */
+
+        var arr = [1, 1, 0, 1, 1, 2, 3, 3, 4, 2, 4, 2]; // 2(1,4,6)=13 3(2,3)=5
+        var used = [];
+        var minimun = -1, repetitions = 0, acum = 0, counter = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+
+            if (used.includes(arr[i])) {
+                continue;
+            }
+
+            for (let j = 0; j < arr.length; j++) {
+                if ((arr[i] == arr[j])) {
+                    acum += j;
+                    counter++;
+                }
+            }
+
+            if (counter > 1) {
+                if (acum < repetitions || repetitions == 0) {
+                    minimun = arr[i];
+                    repetitions = acum;
+                }
+            }
+
+            //console.log({ num: arr[i], cant: acum, counter  });
+            used.push(arr[i])
+            acum = 0;
+            counter = 0;
+        }
+
+        console.log(minimun)
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
