@@ -24,7 +24,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             int cantEmployees = Int32.Parse(Console.ReadLine());
-            int employees = 0;
+            
             int solutions = 0;
 
             for (int i = 0; i < cantEmployees;i++)
